@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="EasySchool.View.LessonManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EasySchool.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="560" d:DesignWidth="650"
+             Background = "{StaticResource WindowBackgroundBrush}">
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Text="{Binding ScreenName}" Style="{StaticResource MainTitleText}"/>
+
+        <StackPanel DockPanel.Dock="Left">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton GroupName="SearchCategory" Content="By Class" IsChecked="{Binding SearchingByClass}" />
+                <RadioButton GroupName="SearchCategory" Content="By Subject" IsChecked="{Binding SearchingByCourse}"/>
+                <RadioButton GroupName="SearchCategory" Content="By Teacher" IsChecked="{Binding SearchingByTeacher}"/>
+            </StackPanel>
+
+            <ComboBox ItemsSource="{Binding Path=AvailableSearchChoices, Mode=TwoWay}"
+                              SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=SelectedSearchChoice, Mode=TwoWay}" Margin="0,5,0,0"/>
+
+            <DataGrid DockPanel.Dock="Right" ItemsSource="{Binding Path=LessonsTableData}" SelectionMode="Single" SelectedItem="{Binding Path=SelectedLesson}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden" AutoGenerateColumns="False" IsReadOnly="True" FlowDirection="RightToLeft"
+                  VerticalAlignment="Top" HorizontalContentAlignment="Center" RowHeaderWidth ="0" Margin="0,5,0,0" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Path=RoomName}" Width="50" HeaderStyle="{StaticResource ColumnHeaderMainStyle}"/>
+                    <DataGridTextColumn Header="Teacher" Binding="{Binding Path=TeacherName}" Width="90" HeaderStyle="{StaticResource ColumnHeaderMainStyle}"/>
+                    <DataGridTextColumn Header="Subject" Binding="{Binding Path=CourseName}" Width="90" HeaderStyle="{StaticResource ColumnHeaderMainStyle}"/>
+                    <DataGridTextColumn Header="Class" Binding="{Binding Path=ClassName}" Width="55" HeaderStyle="{StaticResource ColumnHeaderMainStyle}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Right">
+            <Grid Margin="0,20,0,0" Width="400" >
+                <Grid.Resources >
+                    <Style TargetType="Border" >
+                        <Setter Property="Padding" Value="5,10,0,10" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.46*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text=":Room" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="0" >
+                    <ComboBox ItemsSource="{Binding Path=AvailableClasses}"
+                              SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=SelectedClass, Mode=TwoWay}" Width="200"/>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="1">
+                    <TextBlock Text=":Teacher" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0" >
+                    <ComboBox ItemsSource="{Binding Path=AvailableTeachers}"
+                              SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=SelectedTeacher, Mode=TwoWay}" Width="200"/>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text=":Subject" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="0" >
+                    <ComboBox ItemsSource="{Binding Path=TeacherAvailableCourses}"
+                              SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=SelectedCourse, Mode=TwoWay}" Width="200"/>
+                </Border>
+
+                <Border Grid.Row="3" Grid.Column="1">
+                    <TextBlock Text=":Room" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="0" >
+                    <ComboBox ItemsSource="{Binding Path=AvailableRooms}"
+                              SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=SelectedRoom, Mode=TwoWay}" Width="200"/>
+                </Border>
+
+                <Border Grid.Row="4" Grid.Column="1">
+                    <TextBlock  Text=":1st Lesson" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableHours}" Width="90"
+                                  SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonFirstHour, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Hour" Style="{StaticResource BasicText}" Margin="5,0,0,0"/>
+
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableDays}" Width="90"
+                                  SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonFirstDay, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Day" Style="{StaticResource BasicText}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="5" Grid.Column="1">
+                    <TextBlock  Text=":2nd Lesson" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableHours}" Width="90"
+                   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonSecondHour, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Hour" Style="{StaticResource BasicText}" Margin="5,0,0,0"/>
+
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableDays}" Width="90"
+                   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonSecondDay, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Day" Style="{StaticResource BasicText}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="6" Grid.Column="1">
+                    <TextBlock  Text=":3rd Lesson" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="6" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableHours}" Width="90"
+                   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonThirdHour, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Hour" Style="{StaticResource BasicText}" Margin="5,0,0,0"/>
+
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableDays}" Width="90"
+                   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonThirdDay, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Day" Style="{StaticResource BasicText}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="7" Grid.Column="1">
+                    <TextBlock  Text=":4st Lesson" Style="{StaticResource BasicText}"/>
+                </Border>
+                <Border Grid.Row="7" Grid.Column="0">
+                    <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableHours}" Width="90"
+                   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonFourthHour, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Hour" Style="{StaticResource BasicText}" Margin="5,0,0,0"/>
+
+
+                        <ComboBox ItemsSource="{Binding Path=AvailableDays}" Width="90"
+                   SelectedValuePath="Key" DisplayMemberPath="Value" SelectedValue="{Binding Path=LessonFourthDay, Mode=TwoWay}" Margin="2,0,0,0"/>
+                        <TextBlock Text=":Day" Style="{StaticResource BasicText}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="8" Grid.Column="0" >
+                    <Button Content="Update" Command="{Binding UpdateLessonCommand}"  Click="Button_Click"/>
+                </Border>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Create New Lesson" Command="{Binding CreateNewLessonCommand}" Width="178"/>
+                <Button Content="Delete" Background="{StaticResource DangerousActionColorBrush}" Command="{Binding DeleteLessonCommand}" Margin="30,0,0,0" />
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

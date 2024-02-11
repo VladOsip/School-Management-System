@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="EasySchool.View.SchoolManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EasySchool.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="560" d:DesignWidth="650"
+             Background = "{StaticResource WindowBackgroundBrush}">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center" Text="{Binding ScreenName}" Style="{StaticResource MainTitleText}"/>
+        <StackPanel Orientation="Horizontal">
+            <Grid Width="450" HorizontalAlignment="Center" Margin="0,30,0,0">
+                <Grid.Resources >
+                    <Style TargetType="Border" >
+                        <Setter Property="Padding" Value="0,20" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.75*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Margin="0,0,-202,0" Grid.Column="1">
+                    <TextBlock Text=":School Name" Style="{StaticResource SecondaryTitleText}" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="99,0,65,0">
+                    <TextBox Width="285" Text="{Binding Path=SchoolName}"/>
+                </Border>
+
+                <Border Grid.Row="1" Margin="0,0,-202,0" Grid.Column="1">
+                    <TextBlock Text=":Description" Style="{StaticResource SecondaryTitleText}" HorizontalAlignment="Center" Height="75" VerticalAlignment="Center"/>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0">
+                    <TextBox Width="285" Height="75" Text="{Binding Path=SchoolDescription}" TextChanged="TextBox_TextChanged" Margin="98,0,-97,0"/>
+                </Border>
+
+                <Border Grid.Row="2" Margin="0,0,-202,0" Grid.Column="1">
+                    <TextBlock Text=":Logo" Style="{StaticResource SecondaryTitleText}" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="0">
+                    <TextBox Width="205" FontSize="14" IsReadOnly="True" HorizontalAlignment="Left" 
+                             Text="{Binding Path=SchoolLogo, Mode=OneWay}" Margin="54,0,0,0"/>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="0"  Margin="275,0,-60,0" Grid.ColumnSpan="2">
+                    <Button Content="...Browse" Width="125" HorizontalAlignment="Left"
+                            Command="{Binding Path=ChooseImageCommand}" RenderTransformOrigin="0.248,0.243" Margin="-16,0,0,0"/>
+                </Border>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel>
+            <Image Width="200" Height="125" Source="{Binding Path=SchoolLogoFullPath}" Margin="25,0,0,0" Stretch="Fill" />
+        </StackPanel>
+
+        <Grid Margin="0,10,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Height="40" Width="200" FontSize="20" Background="{StaticResource DangerousActionColorBrush}" 
+                    Content="Start New Year" Command="{Binding Path=PrepareNewYearCommand}"/>
+            <Button Grid.Column="0" Height="40" FontSize="20" Content="Update" Width="200" Command="{Binding Path=SaveChangesCommand}"/>
+        </Grid>
+    </StackPanel>
+</UserControl>

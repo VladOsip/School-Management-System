@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="EasySchool.View.SchoolInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EasySchool.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="560" d:DesignWidth="650"
+             Background = "{StaticResource WindowBackgroundBrush}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="1" Content="{Binding Path=SchoolName}" 
+               HorizontalAlignment="Center" VerticalAlignment="Top" 
+               FontFamily="Cooper Black" FontSize="40" RenderTransformOrigin="0.5,0.5" Margin="0,20,0,0" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <SkewTransform AngleX="-15"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.1" Direction="318"/>
+            </Label.Effect>
+        </Label>
+        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=SchoolImage}" />
+
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding Path=SchoolDescription}" TextWrapping="WrapWithOverflow"/>
+        </Label>
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
+            <Label Content="{Binding Path=NumberOfStudents}" ContentStringFormat="Number of Students: {0}" />
+            <Label Content="{Binding Path=NumberOfClasses}" ContentStringFormat="Number of Classes: {0}" />
+            <Label Content="{Binding Path=ClassAverageSize}" ContentStringFormat="Average Class Size: {0}" />
+            <Label Content="{Binding Path=ScoreAverage}" ContentStringFormat="Average GPA: {0}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

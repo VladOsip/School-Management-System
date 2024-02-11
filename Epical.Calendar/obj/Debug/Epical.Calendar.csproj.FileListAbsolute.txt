@@ -1,0 +1,13 @@
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\bin\Debug\Epical.Calendar.dll
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\bin\Debug\Epical.Calendar.pdb
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar.csproj.AssemblyReference.cache
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar_MarkupCompile.cache
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar_MarkupCompile.lref
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Themes\Generic.baml
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar.g.resources
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar.Properties.Resources.resources
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar.csproj.GenerateResource.cache
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar.csproj.CoreCompileInputs.cache
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar.dll
+C:\Users\97254\Desktop\EasySchool\Epical.Calendar\obj\Debug\Epical.Calendar.pdb
